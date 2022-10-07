@@ -4,13 +4,21 @@
 " license : MIT license
 " ===================================
 
+" Vi Improved
+set nocompatible
+" ===================================
+"   VARIABLES
+" ===================================
+"let g:custom_colorscheme = 'eldlord'
+let g:custom_colorscheme = 'molokai'
+let g:custom_background = 'dark'
+
+let g:custom_default_use_softtab = 1
+let g:custom_indent_width = 4
+
 " ===================================
 "   GENERAL
 " ===================================
-" Vi Improved
-if &compatible
-    set nocompatible
-endif
 set runtimepath^=~/.vim
 set runtimepath+=~/.vim/after
 
@@ -22,6 +30,8 @@ set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
 set clipboard+=unnamed
 set clipboard+=unnamedplus
 
+set mouse=a
+
 set whichwrap=b,s,h,l,<,>,[,]
 
 syntax on
@@ -29,14 +39,14 @@ syntax on
 filetype plugin indent off
 
 augroup filetype_settings
-    au BufNewFile,BufRead *.vim   set filetype=vim
-    au BufNewFile,BufRead *.vimrc set filetype=vim
-    au BufNewFile,BufRead *.c     set filetype=c
-    au BufNewFile,BufRead *.js    set filetype=javascript
-    au BufNewFile,BufRead *.py    set filetype=python
-    au BufNewFile,BufRead *.sh    set filetype=sh
-    au BufNewFile,BufRead *.bash  set filetype=sh
-    au BufNewFile,BufRead *.ash   set filetype=sh
+  au BufNewFile,BufRead *.vim   set filetype=vim
+  au BufNewFile,BufRead *.vimrc set filetype=vim
+  au BufNewFile,BufRead *.c     set filetype=c
+  au BufNewFile,BufRead *.js    set filetype=javascript
+  au BufNewFile,BufRead *.py    set filetype=python
+  au BufNewFile,BufRead *.sh    set filetype=sh
+  au BufNewFile,BufRead *.bash  set filetype=sh
+  au BufNewFile,BufRead *.ash   set filetype=sh
 augroup END
 
 " ===================================
@@ -52,19 +62,23 @@ set autochdir
 set backspace=indent,eol,start
 
 " indent
-set noexpandtab
-set tabstop=4
+if g:custom_default_use_softtab
+  set expandtab
+else
+  set noexpandtab
+endif
+execute 'set tabstop=' . g:custom_indent_width
 set softtabstop=-1
 set shiftwidth=0
 set autoindent
 set smartindent
 " ref: https://qiita.com/ysn/items/f4fc8f245ba50d5fb8b0
 augroup filetype_indent_settings
-    au FileType vim    setl et   ts=2 sts=-1 sw=0
-    au FileType c      setl noet ts=4 sts=-1 sw=0
-    au FileType js     setl noet ts=4 sts=-1 sw=0
-    au FileType python setl et   ts=4 sts=-1 sw=0
-    au FileType sh     setl et   ts=2 sts=-1 sw=0
+  au FileType vim    setl et   ts=2 sts=-1 sw=0
+  au FileType c      setl noet ts=4 sts=-1 sw=0 cindent
+  au FileType js     setl noet ts=4 sts=-1 sw=0
+  au FileType python setl et   ts=4 sts=-1 sw=0
+  au FileType sh     setl et   ts=2 sts=-1 sw=0
 augroup END
 
 " ===================================
@@ -76,6 +90,7 @@ set cursorline
 set showmatch
 set showmode
 set list
+set listchars=   " init
 set listchars+=tab:>\ 
 set listchars+=trail:~
 set listchars+=nbsp:%
@@ -83,19 +98,37 @@ set listchars+=nbsp:%
 set listchars+=extends:»
 set listchars+=precedes:«
 "set listchars+=space:·
+
+" ===================================
+"  STATUSLINE
+" ===================================
 set laststatus=2
+set statusline=   " init
+set statusline+=%f
+set statusline+=%m
+set statusline+=%r
+set statusline+=%=
+"set statusline+=[%{&fileformat}]
+set statusline+=l:%l/%L
 
 " ===================================
 "   KEYBINDINGS
 " ===================================
 nnoremap j gj
 nnoremap k gk
-nnoremap <Up> gj
-nnoremap <Down> gk
+nnoremap <Up> gk
+nnoremap <Down> gj
+
+inoremap { {}<Left>
+inoremap [ []<Left>
+inoremap ( ()<Left>
+inoremap ' ''<Left>
+inoremap " ""<Left>
 
 filetype on
 filetype plugin on
 filetype indent on
 
-set background=dark
-colorscheme default
+execute 'set background=' . g:custom_background
+execute 'colorscheme ' . g:custom_colorscheme
+
