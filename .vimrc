@@ -6,21 +6,24 @@
 
 " Vi Improved
 set nocompatible
+
 " ===================================
 "   VARIABLES
 " ===================================
-"let g:custom_colorscheme = 'eldlord'
-let g:custom_colorscheme = 'molokai'
+let g:custom_colorscheme = 'elflord'
+"let g:custom_colorscheme = 'molokai'
 let g:custom_background = 'dark'
-
+let g:custom_guifont = 'HackGen\ Console:h13'
 let g:custom_default_use_softtab = 1
 let g:custom_indent_width = 4
+
+let g:custom_enable_pluginmanager = 1
 
 " ===================================
 "   GENERAL
 " ===================================
-set runtimepath^=~/.vim
-set runtimepath+=~/.vim/after
+"set runtimepath^=~/.vim
+"set runtimepath+=~/.vim/after
 
 " Encodings
 set fileformat=unix
@@ -112,6 +115,24 @@ set statusline+=%=
 set statusline+=l:%l/%L
 
 " ===================================
+"   PLUGINS
+" ===================================
+if g:custom_enable_pluginmanager
+  " bootstrap
+  let s:jetpackfile = expand('<sfile>:p:h') .. '/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'
+  let s:jetpackurl = "https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim"
+  if !filereadable(s:jetpackfile)
+    call system(printf('curl -fsSLo %s --create-dirs %s', s:jetpackfile, s:jetpackurl))
+  endif
+  " plugins
+  runtime */jetack.vim
+  call jetpack#begin()
+  Jetpack 'tani/vim-jetpack', {'opt': 1}
+  Jetpack 'vim-jp/vimdoc-ja'
+  call jetpack#end()
+endif
+
+" ===================================
 "   KEYBINDINGS
 " ===================================
 nnoremap j gj
@@ -119,16 +140,17 @@ nnoremap k gk
 nnoremap <Up> gk
 nnoremap <Down> gj
 
-inoremap { {}<Left>
-inoremap [ []<Left>
-inoremap ( ()<Left>
-inoremap ' ''<Left>
-inoremap " ""<Left>
+"inoremap { {}<Left>
+"inoremap [ []<Left>
+"inoremap ( ()<Left>
+"inoremap ' ''<Left>
+"inoremap " ""<Left>
 
 filetype on
 filetype plugin on
 filetype indent on
 
+execute 'set guifont=' . g:custom_guifont
 execute 'set background=' . g:custom_background
 execute 'colorscheme ' . g:custom_colorscheme
 
