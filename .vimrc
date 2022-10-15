@@ -10,14 +10,16 @@ set nocompatible
 " ===================================
 "   VARIABLES
 " ===================================
-let g:custom_colorscheme = 'elflord'
-"let g:custom_colorscheme = 'molokai'
+let mapleader = "\<Space>"
+
+"let g:custom_colorscheme = 'elflord'
+let g:custom_colorscheme = 'molokai'
 let g:custom_background = 'dark'
 let g:custom_guifont = 'HackGen\ Console:h13'
 let g:custom_default_use_softtab = 1
 let g:custom_indent_width = 4
 
-let g:custom_enable_pluginmanager = 1
+let g:custom_enable_pluginmanager = 0
 
 " ===================================
 "   GENERAL
@@ -91,6 +93,7 @@ set number
 set ruler
 set cursorline
 set showmatch
+set showcmd
 set showmode
 set list
 set listchars=   " init
@@ -145,6 +148,13 @@ nnoremap <Down> gj
 "inoremap ( ()<Left>
 "inoremap ' ''<Left>
 "inoremap " ""<Left>
+
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR> 
+nnoremap <Leader>hs :split<CR>
+nnoremap <Leader>vs :vsplit<CR>
+nnoremap <Leader>sh :split<CR>
+nnoremap <Leader>sv :vsplit<CR>
 
 filetype on
 filetype plugin on
