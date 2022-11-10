@@ -18,6 +18,7 @@ let g:custom_default_use_softtab = 1
 let g:custom_indent_width = 4
 
 let g:custom_enable_pluginmanager = 1
+let g:custom_enable_pluginmanager = 0
 
 " ===================================
 "   GENERAL
