@@ -16,8 +16,8 @@ let g:custom_background = 'dark'
 let g:custom_guifont = 'HackGen\ Console:h13'
 let g:custom_default_use_softtab = 1
 let g:custom_indent_width = 4
+let mapleader = "\<Space>"
 
-let g:custom_enable_pluginmanager = 1
 let g:custom_enable_pluginmanager = 0
 
 " ===================================
@@ -147,6 +147,34 @@ nnoremap <Down> gj
 "inoremap ( ()<Left>
 "inoremap ' ''<Left>
 "inoremap " ""<Left>
+
+" ref: https://qiita.com/r12tkmt/items/b89df403f587216802f1
+" === [window] ===
+nmap <Leader>w [window]
+  " ref: https://lesguillemets.github.io/blog/2014/10/16/vim-window-controls.html
+  " Openeing a window
+  " <C-w>s == :split
+  nnoremap [window]s <C-w>s
+  " <C-w>v == :vsplit
+  nnoremap [window]v <C-w>v
+  " <C-w>n == :new
+  nnoremap [window]n <C-w>n
+  " Closing a window
+  " <C-w>q == :quit
+  nnoremap [window]q <C-w>q
+  " <C-w>o == :only
+  nnoremap [window]o <C-w>o
+  " <C-w>r .. rotate window
+  " Moving cursor to other windows
+  nnoremap [window]h <C-w>h
+  nnoremap [window]j <C-w>j
+  nnoremap [window]k <C-w>k
+  nnoremap [window]l <C-w>l
+  " Moving windows around
+  nnoremap [window]r <C-w>r
+  " <C-w>p
+  nnoremap [window]p <C-w>p
+
 
 filetype on
 filetype plugin on
