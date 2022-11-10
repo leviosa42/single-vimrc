@@ -91,6 +91,7 @@ augroup END
 set number
 set ruler
 set cursorline
+set showcmd
 set showmatch
 set showmode
 set list
