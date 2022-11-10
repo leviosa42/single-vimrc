@@ -10,8 +10,10 @@ set nocompatible
 " ===================================
 "   VARIABLES
 " ===================================
-let g:custom_colorscheme = 'elflord'
-"let g:custom_colorscheme = 'molokai'
+let mapleader = "\<Space>"
+
+"let g:custom_colorscheme = 'elflord'
+let g:custom_colorscheme = 'molokai'
 let g:custom_background = 'dark'
 let g:custom_guifont = 'HackGen\ Console:h13'
 let g:custom_default_use_softtab = 1
@@ -93,6 +95,7 @@ set ruler
 set cursorline
 set showcmd
 set showmatch
+set showcmd
 set showmode
 set list
 set listchars=   " init
