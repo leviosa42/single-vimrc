@@ -175,6 +175,17 @@ nmap <Leader>w [window]
   " <C-w>p
   nnoremap [window]p <C-w>p
 
+nnoremap <Tab> :tabnext<CR>
+nnoremap <S-Tab> :tabprevious<CR>
+
+nmap <Leader>t [tab]
+  " ref: https://spirits.appirits.com/doruby/9017/
+  " Moving current tab
+  nnoremap [tab]p :tabprevious<CR>
+  nnoremap [tab]<Left> :tabprevious<CR>
+  nnoremap [tab]n :tabnext<CR>
+  nnoremap [tab]<Right> :tabnext<CR>
+  nnoremap [tab]c :tabclose<CR>
 
 filetype on
 filetype plugin on
